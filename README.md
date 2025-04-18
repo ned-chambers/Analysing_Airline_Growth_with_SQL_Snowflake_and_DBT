@@ -2,12 +2,28 @@
 
 This project models and analyses commercial airline data to investigate growth patterns, passenger volumes, and fleet activity. It uses a modern data stack: data is stored and queried in **Snowflake**, modelled using **dbt Core**, and analysed interactively in **Deepnote**.
 
-The project was completed as part of the RNCP35288 “Concepteur Développeur en Science des Données” certification at Jedha.
+It was developed as part of a professional data science certification at Jedha (RNCP35288).
 
 This repository includes:
 - A full dbt project (`/dbt_project`)
 - A raw SQL data seed (`aircraft_db.sql`)
 - A Deepnote notebook (`/deepnote_report`) and slides (`/slides`) for presenting results
+
+---
+
+## 📊 Dataset
+
+This project uses a fictional dataset provided by Jedha for training purposes.
+
+The data was loaded using the [`aircraft_db.sql`](./aircraft_db.sql) script and includes the following tables:
+
+- `aircraft` – individual aircraft with type and capacity
+- `airports` – airport codes and names
+- `airlines` – airline codes and names
+- `individual_flights` – flight-level records including aircraft ID and airport codes
+- `flight_summary_data` – aggregated airline metrics
+
+> This dataset has been synthetically generated and does not represent real airline operations.
 
 ---
 
@@ -33,9 +49,22 @@ This repository includes:
 
 ## 🔄 Project workflow
 
-### 🧱 1. DBT modelling phase
+### ❄️ 1. Data loading into Snowflake
 
-- Created **sources** for 4 raw tables in Snowflake
+- Loaded raw aviation data into Snowflake using the script [`aircraft_db.sql`](./aircraft_db.sql)
+- Created a small virtual warehouse and a dedicated database/schema via the Snowflake web UI
+- Executed DDL and `INSERT` statements to populate the following tables:
+  - `aircraft`
+  - `airports`
+  - `airlines`
+  - `individual_flights`
+  - `flight_summary_data`
+
+> These tables were the starting point for dbt transformations.
+
+### 🧱 2. DBT modelling phase
+
+- Created **sources** for the 4 raw tables in Snowflake using `sources.yml`
 - Built **staging models** to standardise formats (e.g. dates, names, types)
 - Designed dimensional models: `dim_aircraft`, `dim_airport`, and a placeholder `dim_airline` (included for completeness, not run due to Snowflake trial expiration)
 - Developed **intermediate models** to answer business questions:
@@ -47,7 +76,7 @@ This repository includes:
 
 > *These dbt models served as the analytical foundation for further exploration in Deepnote.*
 
-### 📊 2. Interactive analysis in Deepnote
+### 📊 3. Interactive analysis in Deepnote
 
 - Connected Deepnote directly to Snowflake
 - Re-ran and refined queries for readability and presentation
