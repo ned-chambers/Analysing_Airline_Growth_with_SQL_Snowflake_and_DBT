@@ -1,0 +1,91 @@
+version: 2
+
+sources:
+  - name: aircraft_data
+    description: A cloned snapshot of aircraft-related operational data.
+    database: raw
+    schema: public
+    tables:
+      - name: aircraft
+        description: Master data for individual aircraft.
+      - name: airlines
+        description: Metadata for airline carriers.
+      - name: airports
+        description: Reference data for airport codes and names.
+      - name: individual_flights
+        description: Flight-level records including aircraft ID and departure/arrival airports.
+      - name: flight_summary_data
+        description: Aggregated flight statistics including ASM and RPM metrics.
+
+models:
+  - name: dim_aircraft
+    description: >
+      Aircraft-level dimension combining aircraft metadata with total flight count.
+    columns:
+      - name: Aircraft_Type
+        description: The type or model of the aircraft.
+      - name: Flight_Count
+        description: Total number of flights performed by this aircraft type.
+
+  - name: dim_airport
+    description: >
+      Airport-level dimension estimating total passengers per airport
+      based on aircraft capacity and flight counts.
+    columns:
+      - name: Airport_Code
+        description: Unique code identifying the airport.
+        tests:
+          - not_null
+          - unique
+      - name: Airport_Name
+        description: Full name of the airport.
+      - name: Total_Passengers
+        description: Estimated total passengers transported through this airport.
+
+  - name: dim_airline
+    description: >
+      Airline-level dimension combining raw metadata with KPIs from intermediate models.
+      Includes best RPM year and best ASM growth year per airline.
+
+      ⚠️ This model was not built or tested due to the expiration of Snowflake free trial access.
+      It is included to demonstrate intended modelling structure.
+    columns:
+      - name: Airline_Code
+        description: Unique identifier for the airline.
+        tests:
+          - not_null
+          - unique
+      - name: Airline_Name
+        description: Full name of the airline.
+      - name: Best_RPM_Year
+        description: The year in which the airline achieved its highest total RPM.
+      - name: Best_RPM_Value
+        description: RPM value during the best RPM year.
+      - name: Best_ASM_Year
+        description: The year in which the airline achieved its highest average ASM.
+      - name: Best_ASM_Value
+        description: ASM value during the best ASM year.
+
+  - name: int_best_years
+    description: >
+      Intermediate model calculating the best year for Revenue Passenger Miles (RPM)
+      per airline, considering domestic, international, and total values.
+    columns:
+      - name: Airline_Code
+        description: Airline identifier used to group RPM values.
+      - name: Year
+        description: The best RPM year based on rank logic.
+      - name: Total_RPM
+        description: Combined domestic and international RPM for that year.
+
+  - name: int_max_asm_airlines
+    description: >
+      Intermediate model identifying the best year of growth for each airline,
+      based on average domestic ASM per year.
+    columns:
+      - name: Airline_Code
+        description: Unique identifier for the airline.
+      - name: Year
+        description: Year with the highest average ASM.
+      - name: Max_ASM
+        description: Average ASM value for the best growth year.

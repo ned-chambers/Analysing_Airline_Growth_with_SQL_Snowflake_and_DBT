@@ -1,0 +1,18 @@
+name: "analysing_airline_growth"
+version: "1.0"
+config-version: 2
+
+profile: "default"
+
+model-paths: ["dbt_project/models"]
+seed-paths: ["dbt_project/seeds"]
+analysis-paths: ["dbt_project/analyses"]
+test-paths: ["dbt_project/tests"]
+macro-paths: ["dbt_project/macros"]
+snapshot-paths: ["dbt_project/snapshots"]
+
+models:
+  analysing_airline_growth:
+    aircraft:
+      +materialized: view
+      +schema: aircraft

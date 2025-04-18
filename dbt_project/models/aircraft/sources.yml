@@ -1,0 +1,11 @@
+sources:
+  - name: aircraft_data
+    description: A clone of a Postgres application database.
+    database: raw
+    schema: public
+    tables:
+      - name: aircraft
+      - name: airlines
+      - name: airports
+      - name: flight_summary_data
+      - name: individual_flights

@@ -4,6 +4,11 @@ This project models and analyses commercial airline data to investigate growth p
 
 The project was completed as part of the RNCP35288 “Concepteur Développeur en Science des Données” certification at Jedha.
 
+This repository includes:
+- A full dbt project (`/dbt_project`)
+- A raw SQL data seed (`aircraft_db.sql`)
+- A Deepnote notebook (`/deepnote_report`) and slides (`/slides`) for presenting results
+
 ---
 
 ## 📌 Objectives
@@ -32,11 +37,13 @@ The project was completed as part of the RNCP35288 “Concepteur Développeur en
 
 - Created **sources** for 4 raw tables in Snowflake
 - Built **staging models** to standardise formats (e.g. dates, names, types)
-- Designed **dimensional models**: `dim_aircraft`, `dim_airline`, `dim_airport`
+- Designed dimensional models: `dim_aircraft`, `dim_airport`, and a placeholder `dim_airline` (included for completeness, not run due to Snowflake trial expiration)
 - Developed **intermediate models** to answer business questions:
   - `int_max_asm_airlines` – ASM-based airline growth
   - `int_best_years` – Revenue Passenger Miles per airline/year
-- Used **Jinja macros** and **tests** to ensure data quality and reusability
+- Applied **Jinja templating** (e.g. `ref()`, `source()`) to define model relationships and structure modular SQL logic
+
+![DBT model lineage graph](./screenshots/dbt_graph.png)
 
 > *These dbt models served as the analytical foundation for further exploration in Deepnote.*
 
@@ -56,10 +63,10 @@ The project was completed as part of the RNCP35288 “Concepteur Développeur en
 2. **Which airport transported the most passengers?**  
    → The Amazon Mothership (estimated via capacity × flight count)
 
-3. **What was the best year for RPM per airline?**  
+3. **What was the best year for RPM (Revenue Passenger Miles) per airline?**  
    → Varied by airline (2015–2016); nulls handled as zeroes
 
-4. **What was the best year for growth based on ASM?**  
+4. **What was the best year for growth based on ASM (Available Seat Miles)?**  
    → Goose Airways peaked in 2016 with the highest average ASM
 
 ---
@@ -94,14 +101,14 @@ Analysing_Airline_Growth_with_SQL_Snowflake_and_DBT/</br>
 │   │   │   ├── dim_airport.sql</br>
 │   │   │   ├── int_max_asm_airlines.sql</br>
 │   │   │   └── int_best_years.sql</br>
-│   ├── macros/</br>
-│   ├── tests/</br>
 │   ├── dbt_project.yml</br>
+│   ├── schema.yml</br>
+│   ├── sources.yml</br>
 │   └── README.md</br>
 ├── deepnote_report/</br>
-│   └── notebook_export.pdf</br>
+│   └── final_analysis_notebook.pdf</br>
 ├── slides/</br>
-│   └── presentation.pptx</br>
+│   └── airline_growth_slides.pptx</br>
 ├── screenshots/</br>
 │   └── dbt_graph.png</br>
 └── README.md</br>
@@ -111,3 +118,4 @@ Analysing_Airline_Growth_with_SQL_Snowflake_and_DBT/</br>
 ## 📎 Notes
 
 This project was completed independently using modern analytics engineering practices. The DBT portion was prototyped and tested before delivering the final analysis through Deepnote, for clarity and communication with non-technical stakeholders.
+⚠️ Due to the expiration of the Snowflake free trial, the final dbt build and documentation steps could not be executed. Models like `dim_airline` are included to demonstrate the intended structure and modelling approach.
