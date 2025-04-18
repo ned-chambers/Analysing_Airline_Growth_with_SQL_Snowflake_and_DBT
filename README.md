@@ -60,6 +60,8 @@ The data was loaded using the [`aircraft_db.sql`](./aircraft_db.sql) script and 
   - `individual_flights`
   - `flight_summary_data`
 
+![Database schema](./screenshots/database_schema.png)
+
 > These tables were the starting point for dbt transformations.
 
 ### 🧱 2. DBT modelling phase
