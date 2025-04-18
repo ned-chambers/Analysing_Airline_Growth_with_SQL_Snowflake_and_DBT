@@ -84,6 +84,7 @@ The project was completed as part of the RNCP35288 “Concepteur Développeur en
 ## 📁 Repo structure
 
 Analysing_Airline_Growth_with_SQL_Snowflake_and_DBT/</br>
+├── aircraft_db.sql                # ❗ Raw data loading script (DDL + inserts)</br>
 ├── dbt_project/</br>
 │   ├── models/</br>
 │   │   ├── staging/</br>
