@@ -95,18 +95,19 @@ The data was loaded using the [`aircraft_db.sql`](./aircraft_db.sql) script and 
    → The Amazon Mothership (estimated via capacity × flight count)
 
 3. **What was the best year for RPM (Revenue Passenger Miles) per airline?**  
-   → Varied by airline (2015–2016); nulls handled as zeroes
+   → Varied by airline (2015 for Amazon Airlines, 2016 for Flock Air and Goose Airways)
 
 4. **What was the best year for growth based on ASM (Available Seat Miles)?**  
    → Goose Airways peaked in 2016 with the highest average ASM
+   → Amazon Airlines peaked much earlier, in 2002
 
 ---
 
 ## 💡 Key insights
 
 - **Amazon Airlines** leads in volume but faces competition from **Flock Air** and **Goose Airways**.
-- 2016 marked the peak growth year across several carriers.
-- Suggested strategies include **fleet modernisation**, **loyalty programmes**, and **airport partnerships**.
+- 2016 marked the peak growth year across several carriers, with the exception of Amazon Airlines, who peaked over a decade earlier in 2002.
+- Suggested strategies for Amazon Airlines to improve their competitivity include **fleet modernisation**, **loyalty programmes**, and **airport partnerships**.
 
 ---
 
