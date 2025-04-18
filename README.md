@@ -83,27 +83,27 @@ The project was completed as part of the RNCP35288 “Concepteur Développeur en
 
 ## 📁 Repo structure
 
-Analysing_Airline_Growth_with_SQL_Snowflake_and_DBT/
-├── dbt_project/
-│   ├── models/
-│   │   ├── staging/
-│   │   ├── aircraft/
-│   │   │   ├── dim_aircraft.sql
-│   │   │   ├── dim_airline.sql
-│   │   │   ├── dim_airport.sql
-│   │   │   ├── int_max_asm_airlines.sql
-│   │   │   └── int_best_years.sql
-│   ├── macros/
-│   ├── tests/
-│   ├── dbt_project.yml
-│   └── README.md
-├── deepnote_report/
-│   └── notebook_export.pdf
-├── slides/
-│   └── presentation.pptx
-├── screenshots/
-│   └── dbt_graph.png
-└── README.md
+Analysing_Airline_Growth_with_SQL_Snowflake_and_DBT/</br>
+├── dbt_project/</br>
+│   ├── models/</br>
+│   │   ├── staging/</br>
+│   │   ├── aircraft/</br>
+│   │   │   ├── dim_aircraft.sql</br>
+│   │   │   ├── dim_airline.sql</br>
+│   │   │   ├── dim_airport.sql</br>
+│   │   │   ├── int_max_asm_airlines.sql</br>
+│   │   │   └── int_best_years.sql</br>
+│   ├── macros/</br>
+│   ├── tests/</br>
+│   ├── dbt_project.yml</br>
+│   └── README.md</br>
+├── deepnote_report/</br>
+│   └── notebook_export.pdf</br>
+├── slides/</br>
+│   └── presentation.pptx</br>
+├── screenshots/</br>
+│   └── dbt_graph.png</br>
+└── README.md</br>
 
 ---
 
